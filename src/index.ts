@@ -1,9 +1,7 @@
 import { Client } from 'revolt.js';
 import { config } from 'dotenv';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-import { launch } from './lib/interface';
+import path from 'path';
+import { launch } from 'turnip-beams';
 
 const client = new Client();
 config();
@@ -14,7 +12,7 @@ client.on('ready', () => {
 
 client.loginBot(process.env.TOKEN!);
 
-const __filename = fileURLToPath(import.meta.url);
-launch(client, path.join(dirname(__filename), 'commands'), {
+const __dirname = path.resolve();
+launch(client, path.join(__dirname, 'dist', 'commands'), {
   getPrefix: () => '.',
 });

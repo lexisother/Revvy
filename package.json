@@ -36,6 +36,7 @@
     "glob": "^7.2.0",
     "node-fetch": "^3.2.3",
     "revolt-api": "^0.5.3-rc.8",
-    "revolt.js": "6.0.0-rc.4"
+    "revolt.js": "6.0.0-rc.4",
+    "turnip-beams": "^1.0.0"
   }
 }
