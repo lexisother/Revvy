@@ -1,18 +1,24 @@
+import './modules/globals';
 import { Client } from 'revolt.js';
-import { config } from 'dotenv';
 import path from 'path';
 import { launch } from 'turnip-beams';
 
+import setup from './modules/setup';
+import Storage from './modules/storage';
+
+let config: any;
+
 const client = new Client();
-config();
-
-client.on('ready', () => {
-  console.info(`Logged in as ${client.user!.username}`);
+setup.init().then(() => {
+  config = Storage.read('config');
+  client.loginBot(config.token).catch(setup.again);
 });
-
-client.loginBot(process.env.TOKEN!);
 
 const __dirname = path.resolve();
 launch(client, path.join(__dirname, 'dist', 'commands'), {
-  getPrefix: () => '.',
+  getPrefix: () => config.prefix,
+});
+
+client.on('ready', () => {
+  console.info(`Logged in as ${client.user!.username}`);
 });
