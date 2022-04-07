@@ -1,6 +1,6 @@
 import './modules/globals';
 import { Client } from 'revolt.js';
-import path from 'path';
+import { dirname, join } from 'path';
 import { launch } from 'turnip-beams';
 
 import setup from './modules/setup';
@@ -14,8 +14,8 @@ setup.init().then(() => {
   client.loginBot(config.token).catch(setup.again);
 });
 
-const __dirname = path.resolve();
-launch(client, path.join(__dirname, 'dist', 'commands'), {
+const __dirname = dirname(new URL(import.meta.url).pathname);
+launch(client, join(__dirname, 'dist', 'commands'), {
   getPrefix: () => config.prefix,
 });
 
