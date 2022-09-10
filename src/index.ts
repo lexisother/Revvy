@@ -15,9 +15,11 @@ setup.init().then(() => {
 });
 
 const __dirname = dirname(new URL(import.meta.url).pathname);
-launch(client, join(__dirname, 'dist', 'commands'), {
+launch(client, join(__dirname, 'commands'), {
   getPrefix: () => config.prefix,
-});
+})
+  .then(() => console.log("Started TurnipBeams"))
+  .catch(console.error)
 
 client.on('ready', () => {
   console.info(`Logged in as ${client.user!.username}`);
