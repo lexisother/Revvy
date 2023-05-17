@@ -7,7 +7,7 @@ const LEGEND =
 export default new NamedCommand({
   description: 'Lists all commands. If a command is specified, their arguments are listed as well.',
   usage: '([command, [subcommand/type], ...])',
-  aliases: ['h'],
+  aliases: ['h-old'],
   async run({ send }) {
     const commands = await getCommandList();
     const helpMenuPages: [string, string][] = [];
@@ -31,6 +31,7 @@ export default new NamedCommand({
       }
 
       helpMenuPages.push([category, output]);
+      console.log(helpMenuPages);
     }
 
     for (const [category, output] of helpMenuPages) {
@@ -40,6 +41,8 @@ export default new NamedCommand({
         colour: EMBED_COLOR,
       });
     }
+
+    console.log(embeds);
 
     send({
       content: `${msg}`,

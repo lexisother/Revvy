@@ -3,6 +3,7 @@ import { Client } from 'revolt.js';
 import { dirname, join } from 'path';
 import { launch } from 'turnip-beams';
 
+// @ts-expect-error This is a coffeescript file... of course there are no type defs.
 import setup from './modules/setup';
 import Storage from './modules/storage';
 
@@ -18,8 +19,8 @@ const __dirname = dirname(new URL(import.meta.url).pathname);
 launch(client, join(__dirname, 'commands'), {
   getPrefix: () => config.prefix,
 })
-  .then(() => console.log("Started TurnipBeams"))
-  .catch(console.error)
+  .then(() => console.log('Started TurnipBeams'))
+  .catch(console.error);
 
 client.on('ready', () => {
   console.info(`Logged in as ${client.user!.username}`);
