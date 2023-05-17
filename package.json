@@ -37,8 +37,8 @@
     "glob": "^7.2.0",
     "inquirer": "^8.2.2",
     "node-fetch": "^3.2.3",
-    "revolt-api": "^0.5.3-rc.8",
-    "revolt.js": "^6.0.13",
-    "turnip-beams": "^1.1.0"
+    "revolt-api": "^0.5.19",
+    "revolt.js": "6.0.20-patch.2",
+    "turnip-beams": "^1.2.0"
   }
 }
