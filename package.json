@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc && coffee --output dist --compile src",
-    "dev": "tsc-watch --onSuccess \"node --experimental-specifier-resolution=node . dev\"",
-    "start": "\"$NODE\" --experimental-specifier-resolution=node dist/index.js"
+    "dev": "tsc-watch --onSuccess \"$NODE --experimental-loader ./loader.js . dev\"",
+    "start": "\"$NODE\" --experimental-loader ./loader.js dist/index.js"
   },
   "repository": {
     "type": "git",
